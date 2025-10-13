@@ -20,15 +20,15 @@ export PYTHONBUFFERED=16
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 source "${SCRIPT_DIR}/../../slime/scripts/models/llama3.2-3B-Instruct.sh"
 
-DATA_DIR=${DATA_DIR:-/root/router_r1_data}
+DATA_DIR=${DATA_DIR:-${HOME}/router_r1_data}
 MODEL_NAME=${ROUTER_R1_MODEL:-llama}
 PROMPT_DATA=${PROMPT_DATA:-${DATA_DIR}/train_nh_${MODEL_NAME}.parquet}
 
 CKPT_ARGS=(
-   --hf-checkpoint /root/meta-llama/Llama-3.2-3B-Instruct/
-   --ref-load /root/Llama-3.2-3B-Instruct_torch_dist/
-   --load /root/Llama-3.2-3B-Instruct_slime/
-   --save /root/Llama-3.2-3B-Instruct_slime/
+   --hf-checkpoint ${HOME}/meta-llama/Llama-3.2-3B-Instruct/
+   --ref-load ${HOME}/Llama-3.2-3B-Instruct_torch_dist/
+   --load ${HOME}/Llama-3.2-3B-Instruct_slime/
+   --save ${HOME}/Llama-3.2-3B-Instruct_slime/
    --save-interval 20
 )
 

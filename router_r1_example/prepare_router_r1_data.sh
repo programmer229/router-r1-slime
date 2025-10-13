@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-DATA_DIR=${DATA_DIR:-"./data/router_r1"}
+DATA_DIR=${DATA_DIR:-"${HOME}/router_r1_data"}
 MODEL=${ROUTER_R1_MODEL:-"qwen"}
 TRAIN_SOURCES=${TRAIN_SOURCES:-"nq,hotpotqa"}
 EVAL_SOURCES=${EVAL_SOURCES:-"nq,hotpotqa"}
