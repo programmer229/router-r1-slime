@@ -11,7 +11,8 @@ export PYTHONBUFFERED=16
 # Prepare dataset paths (run router_r1_example/prepare_router_r1_data.sh first to populate ${DATA_DIR}).
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
-source "${SCRIPT_DIR}/../../slime/scripts/models/llama3.2-3B-Instruct.sh"
+PROJECT_ROOT="$(cd -- "${SCRIPT_DIR}/.." &>/dev/null && pwd)"
+source "${PROJECT_ROOT}/slime/scripts/models/llama3.2-3B-Instruct.sh"
 
 DATA_DIR=${DATA_DIR:-${HOME}/router_r1_data}
 MODEL_NAME=${ROUTER_R1_MODEL:-llama}
