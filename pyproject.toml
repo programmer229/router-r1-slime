@@ -4,7 +4,22 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "accelerate",
+    "datasets>=2.20",
+    "httpx[http2]",
+    "mcp[cli]",
+    "openai>=1.40",
+    "pillow",
+    "pylatexenc",
+    "pyyaml",
+    "ray[default]",
+    "tensorboard",
+    "torch",
+    "tqdm>=4.66",
+    "wandb>=0.17",
+    "transformers",
+]
 
 [tool.black]
 line-length = 127
