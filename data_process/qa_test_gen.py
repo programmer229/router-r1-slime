@@ -15,14 +15,14 @@
 Preprocess the QA dataset to parquet format
 """
 
-import re
+import argparse
 import os
 import random
-import datasets
+import re
+import shutil
 from pathlib import Path
 
-from verl.utils.hdfs_io import copy, makedirs
-import argparse
+import datasets
 
 from prompt_pool import PROMPT_TEMPLATE_QWEN, PROMPT_TEMPLATE_LLAMA
 
@@ -278,6 +278,8 @@ if __name__ == '__main__':
     all_test_dataset.to_parquet(os.path.join(local_dir, f'test_{file_source}_{model_name}.parquet'))
 
     if hdfs_dir is not None:
-        makedirs(hdfs_dir)
-
-        copy(src=local_dir, dst=hdfs_dir)
+        os.makedirs(hdfs_dir, exist_ok=True)
+        dst_path = os.path.join(hdfs_dir, os.path.basename(os.path.abspath(local_dir)))
+        if os.path.exists(dst_path):
+            shutil.rmtree(dst_path)
+        shutil.copytree(local_dir, dst_path)
