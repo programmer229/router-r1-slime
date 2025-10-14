@@ -4,7 +4,7 @@
 set -euo pipefail
 
 DATA_DIR=${DATA_DIR:-"${HOME}/router_r1_data"}
-MODEL=${ROUTER_R1_MODEL:-"qwen"}
+MODEL=${ROUTER_R1_MODEL:-"llama"}
 TRAIN_SOURCES=${TRAIN_SOURCES:-"nlile/hendrycks-MATH-benchmark"}
 EVAL_SOURCES=${EVAL_SOURCES:-"nlile/hendrycks-MATH-benchmark"}
 TEST_SOURCES=${TEST_SOURCES:-"nlile/hendrycks-MATH-benchmark"}
