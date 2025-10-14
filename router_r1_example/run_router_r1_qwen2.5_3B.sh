@@ -103,7 +103,7 @@ CUSTOM_ARGS=(
 )
 
 export MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
-ray start --head --node-ip-address ${MASTER_ADDR} --num-gpus 8 --disable-usage-stats --dashboard-port=4242 --dashboard-host=0.0.0.0
+# ray start --head --node-ip-address ${MASTER_ADDR} --port 5678 --num-gpus 1 --disable-usage-stats --dashboard-port=8886 --dashboard-host=0.0.0.0
 
 RUNTIME_ENV_JSON="{
   \"env_vars\": {
@@ -112,7 +112,7 @@ RUNTIME_ENV_JSON="{
   }
 }"
 
-ray job submit --address="http://10.42.8.245:4242" \
+ray job submit --address="http://10.42.8.245:8886" \
    --runtime-env-json="${RUNTIME_ENV_JSON}" \
    -- python3 slime/train.py \
    --actor-num-nodes 1 \
