@@ -10,7 +10,7 @@ pkill -9 python
 sleep 3
 pkill -9 ray
 pkill -9 python
-ll -9 sglang
+pkill -9 sglang
 
 set -ex
 
