@@ -103,16 +103,16 @@ CUSTOM_ARGS=(
 )
 
 export MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
-#ray start --head --node-ip-address ${MASTER_ADDR} --num-gpus 8 --disable-usage-stats --port 4242
+ray start --head --node-ip-address ${MASTER_ADDR} --num-gpus 8 --disable-usage-stats --dashboard-port=4242 --dashboard-host=0.0.0.0
 
 RUNTIME_ENV_JSON="{
   \"env_vars\": {
     \"PYTHONPATH\": \"/root/Megatron-LM/:${SCRIPT_DIR}\",
-    \"CUDA_DEVICE_MAX_CONNECTIONS\": \"1\"
+    \"CUDA_DEVICE_MAX_CONNECTIONS\": \"1\"SS
   }
 }"
 
-ray job submit --address="http://10.42.8.245:6379" \
+ray job submit --address="http://10.42.8.245:4242" \
    --runtime-env-json="${RUNTIME_ENV_JSON}" \
    -- python3 slime/train.py \
    --actor-num-nodes 1 \
