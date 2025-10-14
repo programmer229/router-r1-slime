@@ -2,7 +2,7 @@
 
 # Router-R1 training launcher adapted from the Search-R1 slime example.
 
-pkipkill -9 sglang
+pkill -9 sglang
 sleep 3
 ray stop --force
 pkill -9 ray
@@ -116,7 +116,7 @@ ray start --head --node-ip-address ${MASTER_ADDR} --num-gpus 1 --disable-usage-s
 RUNTIME_ENV_JSON="{
   \"env_vars\": {
     \"PYTHONPATH\": \"/root/Megatron-LM/:${SCRIPT_DIR}\",
-    \"CUDA_DEVICE_MAX_CONNECTIONS\": \"1\"SS
+    \"CUDA_DEVICE_MAX_CONNECTIONS\": \"1\"
   }
 }"
 

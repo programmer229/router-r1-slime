@@ -13,7 +13,7 @@ dependencies = [
     "pillow",
     "pylatexenc",
     "pyyaml",
-    "ray[default]",
+    "ray[default]>=2.20.0",
     "tensorboard",
     "torch",
     "tqdm>=4.66",
