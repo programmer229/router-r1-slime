@@ -112,8 +112,8 @@ CUSTOM_ARGS=(
 )
 
 EVAL_ARGS=(
-   --eval-interval 5
-   --eval-prompt-data router "${EVAL_PROMPT_DATA}"
+   #--eval-interval 5
+   #--eval-prompt-data router "${EVAL_PROMPT_DATA}"
 )
 
 export MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
