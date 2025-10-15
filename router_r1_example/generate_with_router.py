@@ -141,7 +141,7 @@ async def generate(args, sample: Sample, sampling_params) -> Sample:
     response_token_ids: List[int] = []
     loss_mask: List[int] = []
 
-    for _ in range(ROUTER_R1_CONFIGS["max_turns"]):
+    for turn in range(ROUTER_R1_CONFIGS["max_turns"]):
         payload = {"text": prompt + response, "sampling_params": sampling_params}
         output = await post(url, payload)
 
@@ -150,6 +150,10 @@ async def generate(args, sample: Sample, sampling_params) -> Sample:
             return sample
 
         cur_response = postprocess_responses(output["text"])
+        print(
+            f"[RouterR1][sample={sample.index}][turn={turn}] response chunk: {cur_response}",
+            flush=True,
+        )
         cur_response_token_ids = state.tokenizer(cur_response, add_special_tokens=False)["input_ids"]
         response += cur_response
         response_token_ids += cur_response_token_ids
