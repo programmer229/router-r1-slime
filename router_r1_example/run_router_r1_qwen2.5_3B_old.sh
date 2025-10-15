@@ -28,8 +28,8 @@ PROMPT_DATA=${PROMPT_DATA:-${DATA_DIR}/train_nh_${MODEL_NAME}.parquet}
 EVAL_PROMPT_DATA=${EVAL_PROMPT_DATA:-${DATA_DIR}/test_nh_${MODEL_NAME}.parquet}
 
 CKPT_ARGS=(
-   --hf-checkpoint ${HOME}/meta-llama/Llama-3.2-3B-Instruct/
-   --ref-load ${HOME}/Llama-3.2-3B-Instruct_torch_dist/
+   --hf-checkpoint ${HOME}/meta-llama/Llama-3.2-3B-Instruct/original
+   --ref-load ${HOME}/Llama-3.2-3B-Instruct_torch_dist/original
    --load ${HOME}/Llama-3.2-3B-Instruct_slime/
    --save ${HOME}/Llama-3.2-3B-Instruct_slime/
    --save-interval 20
