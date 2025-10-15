@@ -5,6 +5,15 @@ import random
 import re
 import string
 
+try:
+    from math_verify import parse as math_parse
+    from math_verify import verify as math_verify
+
+    _MATH_VERIFY_AVAILABLE = True
+except ImportError:  # pragma: no cover - optional dependency
+    math_parse = math_verify = None
+    _MATH_VERIFY_AVAILABLE = False
+
 
 def normalize_answer(text: str) -> str:
     """Lower text and remove punctuation, articles, and extra whitespace."""
@@ -30,8 +39,23 @@ def em_check(prediction: str, golden_answers) -> int:
     if isinstance(golden_answers, str):
         golden_answers = [golden_answers]
 
+    parsed_prediction = None
+    if _MATH_VERIFY_AVAILABLE:
+        try:
+            parsed_prediction = math_parse(prediction)
+        except Exception:  # math parsing failed; fall back to text normalization
+            parsed_prediction = None
+
     normalized_prediction = normalize_answer(prediction)
     for golden_answer in golden_answers:
+        if parsed_prediction is not None:
+            try:
+                if math_verify(math_parse(golden_answer), parsed_prediction):
+                    return 1
+            except Exception:
+                # Treat parse or verify errors as non-matches and fall through to text EM.
+                pass
+
         if normalize_answer(golden_answer) == normalized_prediction:
             return 1
     return 0

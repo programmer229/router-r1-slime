@@ -19,6 +19,7 @@ dependencies = [
     "tqdm>=4.66",
     "wandb>=0.17",
     "transformers",
+    "math-verify",
 ]
 
 [tool.black]
