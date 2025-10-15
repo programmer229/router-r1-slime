@@ -25,6 +25,7 @@ source "${PROJECT_ROOT}/slime/scripts/models/llama3.2-3B-Instruct.sh"
 DATA_DIR=${DATA_DIR:-${HOME}/router_r1_data}
 MODEL_NAME=${ROUTER_R1_MODEL:-llama}
 PROMPT_DATA=${PROMPT_DATA:-${DATA_DIR}/train_nh_${MODEL_NAME}.parquet}
+EVAL_PROMPT_DATA=${EVAL_PROMPT_DATA:-${DATA_DIR}/test_nh_${MODEL_NAME}.parquet}
 
 CKPT_ARGS=(
    --hf-checkpoint ${HOME}/meta-llama/Llama-3.2-3B-Instruct/
@@ -110,6 +111,11 @@ CUSTOM_ARGS=(
    --custom-rm-path router_r1_example.generate_with_router.reward_func
 )
 
+EVAL_ARGS=(
+   --eval-interval 5
+   --eval-prompt-data router "${EVAL_PROMPT_DATA}"
+)
+
 export MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
 ray start --head --node-ip-address ${MASTER_ADDR} --num-gpus 2 --disable-usage-stats 
 
@@ -136,4 +142,5 @@ ray job submit --address="http://127.0.0.1:8265" \
    ${PERF_ARGS[@]} \
    ${SGLANG_ARGS[@]} \
    ${MISC_ARGS[@]} \
-   ${CUSTOM_ARGS[@]}
+   ${CUSTOM_ARGS[@]} \
+   ${EVAL_ARGS[@]}

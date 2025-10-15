@@ -18,9 +18,9 @@ ROUTER_R1_CONFIGS = {
     "route_concurrency": 32,
     "api_base": os.getenv("ROUTER_R1_API_BASE", "https://openrouter.ai/api/v1"),
     "api_key": os.getenv("ROUTER_R1_API_KEY", ""),
-    "structure_format_score": 0.2,
-    "final_format_score": 0.1,
-    "retrieval_score": 0.1,
+    "structure_format_score": 0,
+    "final_format_score": 0,
+    "retrieval_score": 0.2,
 }
 
 SEMAPHORE = asyncio.Semaphore(ROUTER_R1_CONFIGS["route_concurrency"])
