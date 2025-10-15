@@ -20,7 +20,7 @@ export PYTHONBUFFERED=16
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 PROJECT_ROOT="$(cd -- "${SCRIPT_DIR}/.." &>/dev/null && pwd)"
-source "${PROJECT_ROOT}/slime/scripts/models/Qwen2.5-3B.sh"
+source "${PROJECT_ROOT}/slime/scripts/models/qwen2.5-3B.sh"
 
 DATA_DIR=${DATA_DIR:-${HOME}/router_r1_data}
 MODEL_NAME=${ROUTER_R1_MODEL:-llama}
