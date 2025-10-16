@@ -177,7 +177,7 @@ def compute_score_em(
         return 0
 
     if em_check(answer, ground_truth["target"]):
-        print(answer, ground_truth["target"])
+        print("SUPER LOG", answer, ground_truth["target"])
         if is_valid_format:
             return score
         return score - structure_format_score
