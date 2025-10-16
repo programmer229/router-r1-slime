@@ -115,6 +115,9 @@ EVAL_ARGS=(
    --eval-interval 5
    --eval-prompt-data router "${EVAL_PROMPT_DATA}"
 )
+RESUME_ARGS=(
+   --start-rollout-id 20    # or whatever step you want
+)
 
 export MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
 ray start --head --node-ip-address ${MASTER_ADDR} --num-gpus 2 --disable-usage-stats 
@@ -143,4 +146,5 @@ ray job submit --address="http://127.0.0.1:8265" \
    ${SGLANG_ARGS[@]} \
    ${MISC_ARGS[@]} \
    ${CUSTOM_ARGS[@]} \
-   ${EVAL_ARGS[@]}
+   ${EVAL_ARGS[@]}\
+   ${RESUME_ARGS[@]}
