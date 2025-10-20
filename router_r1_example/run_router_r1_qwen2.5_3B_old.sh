@@ -116,7 +116,7 @@ EVAL_ARGS=(
    --eval-prompt-data router "${EVAL_PROMPT_DATA}"
 )
 RESUME_ARGS=(
-   --start-rollout-id 45    # or whatever step you want
+   --start-rollout-id 60    # or whatever step you want
 )
 
 export MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
