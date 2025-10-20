@@ -47,7 +47,7 @@ ROLLOUT_ARGS=(
    --apply-chat-template
    --rollout-shuffle
    --num-rollout 3000
-   --rollout-batch-size 16
+   --rollout-batch-size 32
    --n-samples-per-prompt 8
    --rollout-max-response-len 4096
    --rollout-temperature 0.7
