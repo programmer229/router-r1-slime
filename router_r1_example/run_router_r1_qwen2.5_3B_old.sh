@@ -15,6 +15,11 @@ pkill -9 sglang
 set -ex
 
 export PYTHONBUFFERED=16
+export NCCL_DEBUG=INFO
+export NCCL_IB_DISABLE=1
+export NCCL_P2P_DISABLE=1
+export NCCL_SHM_DISABLE=1
+export NCCL_ASYNC_ERROR_HANDLING=1
 
 # Prepare dataset paths (run router_r1_example/prepare_router_r1_data.sh first to populate ${DATA_DIR}).
 
@@ -116,7 +121,7 @@ EVAL_ARGS=(
    --eval-prompt-data router "${EVAL_PROMPT_DATA}"
 )
 RESUME_ARGS=(
-   --start-rollout-id 20    # or whatever step you want
+   --start-rollout-id 45    # or whatever step you want
 )
 
 export MASTER_ADDR=${MASTER_ADDR:-"127.0.0.1"}
