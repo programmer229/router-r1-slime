@@ -32,7 +32,7 @@ CKPT_ARGS=(
    --ref-load ${HOME}/Qwen2.5-3B_torch_dist/
    --load ${HOME}/Qwen2.5-3B_slime/
    --save ${HOME}/Qwen2.5-3B_slime/
-   --save-interval 20
+   --save-interval 5
 )
 
 ROLLOUT_ARGS=(
