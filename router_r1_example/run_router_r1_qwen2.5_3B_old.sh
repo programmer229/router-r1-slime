@@ -15,11 +15,6 @@ pkill -9 sglang
 set -ex
 
 export PYTHONBUFFERED=16
-export NCCL_DEBUG=INFO
-export NCCL_IB_DISABLE=1
-export NCCL_P2P_DISABLE=1
-export NCCL_SHM_DISABLE=1
-export NCCL_ASYNC_ERROR_HANDLING=1
 
 # Prepare dataset paths (run router_r1_example/prepare_router_r1_data.sh first to populate ${DATA_DIR}).
 
