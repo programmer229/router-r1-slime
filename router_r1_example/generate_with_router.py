@@ -176,7 +176,7 @@ async def generate(args, sample: Sample, sampling_params) -> Sample:
     sample.response_length = len(response_token_ids)
     sample.response = response
     sample.loss_mask = loss_mask
-
+    print(sample.response_length)
     finish_type = output["meta_info"]["finish_reason"]["type"]
     if finish_type == "length":
         sample.status = Sample.Status.TRUNCATED
